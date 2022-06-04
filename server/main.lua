@@ -105,7 +105,7 @@ end)
 ESX.RegisterServerCallback('esx_billing:payBill', function(source, cb, billId)
 	local xPlayer = ESX.GetPlayerFromId(source)
 
-	MySQL.Async.fetchAll('SELECT sender, target_type, target, amount FROM billing WHERE id = @id', {
+	MySQL.Async.fetchAll('SELECT sender, target_type, target, label, amount FROM billing WHERE id = @id', {
 		['@id'] = billId
 	}, function(result)
 		if result[1] then
