@@ -1,6 +1,10 @@
-ESX = nil
-
-TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+local esversion = GetResourceMetadata('es_extended', 'version')
+if esversion == '1.1.0' then
+    ESX = nil
+    TriggerEvent('esx:getSharedObject', function(obj) ESX = obj; end)   
+else
+    ESX = exports["es_extended"]:getSharedObject()
+end
 
 local societies = {}
 

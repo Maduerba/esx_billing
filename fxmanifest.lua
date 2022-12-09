@@ -4,7 +4,7 @@ game 'gta5'
 
 description 'ESX Billing'
 
-version '1.2.0'
+version '1.3'
 
 server_scripts {
 	'@mysql-async/lib/MySQL.lua',

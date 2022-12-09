@@ -1,12 +1,12 @@
-ESX = nil
-local isDead = false
+local esversion = GetResourceMetadata('es_extended', 'version')
+if esversion == '1.1.0' then
+    ESX = nil
+    CreateThread(function() while ESX == nil do Wait(0) TriggerEvent('esx:getSharedObject', function(obj) ESX = obj; end); end end)    
+else
+    ESX = exports["es_extended"]:getSharedObject()
+end
 
-Citizen.CreateThread(function()
-	while ESX == nil do
-		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-		Citizen.Wait(0)
-	end
-end)
+local isDead = false
 
 function ShowBillsMenu()
 	ESX.TriggerServerCallback('esx_billing:getBills', function(bills)
